@@ -1,27 +1,9 @@
-import {createStore} from 'redux';
+import { applyMiddleware, createStore } from "redux";
+import { persistStore } from "redux-persist";
+import thunkMiddleware from "redux-thunk";
+import rootReducers from "../reducers";
 
+const store = createStore(rootReducers, applyMiddleware(thunkMiddleware));
+const persistor = persistStore(store);
 
-
-const reducer = (state ={counter : 0},action) =>{
-
-       if(action.type === 'increment'){
-        return {
-            counter : state.counter + 1, 
-        }
-       }
-        if(action.type === 'decrement'){
-            return{
-                counter : state.counter -1,
-            }
-        }
-        return state;
-       
-
-
-}
-
-
-const store = createStore(reducer);
-
-export default store;
-
+export  { store, persistor };

@@ -1,26 +1,52 @@
-* {
-  box-sizing: border-box;
+body {
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+:root,
+html,
+body {
+	background-color: #F0F2F5;
+	box-sizing: border-box;
+}
+
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+html,
+body,
+i,
+img,
+small,
+label,
+li,
+ul,
+p,
+nav,
+span {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: none;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
 }
 
 body {
-  margin: 0;
-  font-family: sans-serif;
-  color: #252525;
-  background-color: #252525;
+	font-family: Arial, sans-serif;
 }
 
-button {
-  font: inherit;
-  cursor: pointer;
-  background-color: #3c0080;
-  border: 1px solid #3c0080;
-  color: white;
-  padding: 0.5rem 1.5rem;
-  border-radius: 6px;
-}
-
-button:hover,
-button:active {
-  background-color: #5b14ac;
-  border-color: #5b14ac;
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
