@@ -5,6 +5,7 @@ import { signOutAPI } from "../action";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import Menu from './Menu';
+import { SpaOutlined } from "@material-ui/icons";
 
 const Container = styled.div`
 	background-color: #fff;
@@ -78,11 +79,7 @@ const Nav = styled.nav`
 	margin-left: auto;
 	display: block;
 	@media (max-width: 768px) {
-		position: fixed;
-		left: 0;
-		bottom: 0;
-		background: white;
-		width: 100%;
+		display: none;
 	}
 `;
 
@@ -164,14 +161,7 @@ const SignOut = styled.div`
 	z-index: 15;
 `;
 
-const SignOutMobile = styled.div`
-	display: none;
-	@media (max-width: 768px) {
-		display: flex;
-		padding-left: 1rem;
-		font-size: 14px;
-	}
-`;
+
 
 const User = styled(NavList)`
 	a > img {
@@ -195,8 +185,46 @@ const User = styled(NavList)`
 `;
 
 const MediaMenu = styled.div`
-     position : absolute;
+     display : none;
+    
+	 @media only screen and (max-width : 768px){
+		 display : block;
+		 cursor : pointer;
+	 }
 	`;
+	const MediaMenuContent = styled.div`
+	display : none;
+   
+	@media only screen and (max-width : 768px){
+		
+		width : 40%; 
+		display : block;
+		position: fixed;
+		z-index: 999;
+		top: 0;
+		left: 0;
+		background-color : gray;
+		overflow-x: hidden;
+		transition: 0.5s;
+		padding-top: 40px;
+		height : 100%;
+
+	
+		& : hover{
+			color: #red;
+		}
+		& > span{
+			margin-left : 90%;
+			color : #fff;
+			font-size : 1.5em;
+			cursor : pointer;
+		}
+		& > span:hover{
+			color : aqua;
+		}
+		
+	}
+   `;
 
 
 
@@ -221,18 +249,26 @@ function Header(props) {
 	return (
 		<Container>
 			<Content>
-				
-							<button onClick={openMenu} >
-									<img src="/images/reorder-three.svg"  style={{width :"25px"}}alt="" />
-									
-							</button>
-						{open && <MediaMenu>
-								<Menu></Menu>
-								<button onClick={closeMenu} >
-									&times;
-									
-								</button>
-							</MediaMenu>
+				          <MediaMenu>
+							<span onClick={openMenu} >
+										<img src="/images/reorder-three.svg"  style={{width :"25px"}}alt="" />
+										
+							</span>
+						  </MediaMenu>
+							
+						{open && 
+							    <MediaMenuContent>
+								<span onClick={closeMenu} >
+											&times;
+											
+								</span>
+								
+								<Menu/>
+								
+								</MediaMenuContent>
+								
+							
+							
 						}
 				
 				<Logo>
@@ -250,9 +286,7 @@ function Header(props) {
 						<img src="/images/search-icon.svg" alt="" />
 					</SearchIcon>
 				</Search>
-				<SignOutMobile onClick={() => props.signOut()}>
-					<a>Sign Out</a>
-				</SignOutMobile>
+				
 				<Nav>
 					<NavListWrap>
 						<NavList >

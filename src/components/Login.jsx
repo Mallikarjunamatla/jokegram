@@ -6,8 +6,13 @@ import { signInAPI, signInAPIPassword } from "../action";
 
 const Container = styled.div`
 
-
-background-color : #FFFC01;
+ background: url(/images/back.jpg) ;
+  height: fit-content;
+padding-right : 160px;
+@media only screen and (max-width : 768px){
+	padding: 5%;
+}
+ 
 
 `;
 
@@ -65,8 +70,8 @@ const Section = styled.section`
 	display: flex;
 	flex-wrap: wrap;
 	align-content: start;
-	min-height: 700px;
-	padding-bottom: 138px;
+	min-height:  100%;
+	
 	padding-top: 40px;
 	padding: 60px 0;
 	position: relative;
@@ -95,19 +100,7 @@ const Hero = styled.div`
 			line-height: 2;
 		}
 	}
-	img {
-		width: 700px;
-		height: 670px;
-		position: absolute;
-		bottom: -2px;
-		right: -150px;
-		@media (max-width: 768px) {
-			top: 230px;
-			position: initial;
-			width: initial;
-			height: initial;
-		}
-	}
+
 	div{
 		display : flex;
 		flex-direction : column;
@@ -120,6 +113,7 @@ const Hero = styled.div`
 		margin : 5px;
 		border-radius : 5px;
 		font-size : 1em;
+		padding: 1% ;
 	}
 
 	div > input[type = "submit"]
@@ -162,8 +156,8 @@ const Google = styled.button`
 	color: rgba(0, 0, 0, 0.6);
 	z-index: 0;
 	&:hover {
-		background-color: rgba(207, 207, 207, 0.25);
-		color: rgba(0, 0, 0, 0.75);
+		background-color: #fff;
+		color: rgba(175, 32, 127, 0.75);
 		box-shadow: inset 0 0 0 2px rgb(0 0 0 / 60%), inset 0 0 0 3px rgb(0 0 0 / 0%), inset 0 0 0 2px rgb(0 0 0 / 0);
 	}
 	img {
@@ -173,15 +167,16 @@ const Google = styled.button`
 `;
 
 const Footer = styled.div`
-     background-color : #1196F5;
-     p{
+    
+		
+		p{
 
 		margin-left : 50%;
+		margin-top: 0%;
 		color : #000;
 		
 
-	 }
-     
+		}
 	  `;
 
 function Login(props) {

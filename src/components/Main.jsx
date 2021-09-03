@@ -104,7 +104,7 @@ const DeletePost = styled.div`
     /* color: red; */
     text-align: right;
     flex: 0 auto;
-}`;
+`;
 
 const Article = styled(CommonBox)`
 	padding: 0;
@@ -465,7 +465,7 @@ function Main(props) {
 									<div>
 										<span>{article.actor.title}</span>
 										<span>{article.actor.description}</span>
-										 <span>{article.actor.date.toDate().toLocaleDateString()}</span> 
+										<span>{article.actor.date.toDate().toLocaleDateString()}</span> 
 									</div> 
 								</a>
 							

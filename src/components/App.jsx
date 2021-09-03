@@ -27,18 +27,12 @@ function App(props) {
 	}, []);
 
 	
-	// const updateDimensions = () => {
-	// 	setWidth(window.innerWidth);
-	// 	setHeight(window.innerHeight);
-	// }
-	// useEffect(() => {
-	// 	window.addEventListener("resize", updateDimensions);
-	// 	return () => window.removeEventListener("resize", updateDimensions);
-	// }, []);
+	
 
 	return (
 		<div className="App">
-			{!props.user ? (<img src="/images/spin-loader.gif" alt="" srcset="" />) : 
+              
+				{!props.user ? <img src="/images/spin-loader.gif" alt="" srcset="" /> : 
 				<Switch>
 					<Route exact path="/">
 						<Login />
@@ -52,11 +46,16 @@ function App(props) {
 						<Saved />
 					</Route>
 					<Route exact path="/user">
-						<Left></Left>
+					    <Header/> 
+						<Left/>
 					</Route>
 				</Switch>
 }
-		</div>
+				
+
+		
+	      
+	</div>
 	);
 }
 

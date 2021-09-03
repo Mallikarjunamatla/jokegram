@@ -2,10 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import styled from 'styled-components';
+import { signOutAPI } from '../action';
 
 
 const Container = styled.div`
-	background-color: #f5f5f5;
+	background-color: gray;
+	
 	
 	z-index: 999;
 `;
@@ -27,14 +29,24 @@ const Nav = styled.nav`
 `;
 
 const NavListWrap = styled.ul`
-
+     list-style : none;
 	
 `;
 
 const NavList = styled.li`
-   img{
-        width : 25px;
-   }
+padding-top : 20px;
+
+	a{
+		color : #fff;
+		text-decoration : none;
+		font-size : 18px;
+		
+		
+	}
+	a:hover{
+		color : aqua;
+	}
+   
 	
 `;
 
@@ -43,7 +55,7 @@ const NavList = styled.li`
 
 
 
-const Menu = () => {
+const Menu = (props) => {
     return (
         <Container>
 			<Content>
@@ -55,7 +67,7 @@ const Menu = () => {
 						<NavList >
 							<NavLink to="/feed" exact activeClassName={'activeClass'} >
 								<a href="">
-									<img src="/images/home.svg" alt="" />
+									
 									<span>Home</span>
 								</a>
 								 
@@ -64,16 +76,16 @@ const Menu = () => {
 						<NavList>
 							    <NavLink to="/feed" >
 									<a href="">
-										<img src="/images/people-sharp.svg" alt="" />
+										
 										<span>Friends</span>
 									</a>
 									
 								</NavLink>
-						</NavList>
+						</NavList> 
 						<NavList>
 								<NavLink to="/feed">
 									<a href="">
-										<img src="/images/users.svg" alt="" />
+										
 										<span>Following</span>
 									</a>
 									
@@ -82,7 +94,7 @@ const Menu = () => {
 						<NavList>
 								<NavLink to="/feed">
 									<a>
-										<img src="/images/chatbubble-ellipses-outline.svg" alt="" />
+										
 										<span>Messages</span>
 									</a>
 									
@@ -91,7 +103,7 @@ const Menu = () => {
 						<NavList>
 								<NavLink to="/feed">
 									<a href="">
-										<img src="/images/nav-notifications.svg" alt="" />
+										
 										<span>Notifications</span>
 									</a>
 									
@@ -101,13 +113,19 @@ const Menu = () => {
                         <NavList>
 								<NavLink to="/user">
 									<a href="">
-										<img src="/images/person-circle-outline.svg" alt="" />
+									
 										<span>My Profile</span>
 									</a>
 									
 								</NavLink>
                                
 						</NavList>
+                      <NavList>
+						<a>
+										
+							<span onClick={() => props.signOut()}>Log Out</span>
+						</a>
+					 </NavList>
 						
 						
 					</NavListWrap>
@@ -125,6 +143,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
+	 signOut: () => dispatch(signOutAPI()),
 	
 });
 

@@ -1,4 +1,6 @@
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
 import styled from "styled-components";
@@ -66,17 +68,28 @@ const RightLayout = styled.div`
 
 
 function Home(props) {
+   const [width,setWidth] =useState(null);
+   const [height,setHeight] =useState(null);
+	const updateDimensions = () => {
+		setWidth(window.innerWidth);
+		setHeight(window.innerHeight);
+	}
+	useEffect(() => {
+		window.addEventListener("resize", updateDimensions);
+		return () => window.removeEventListener("resize", updateDimensions);
+	}, []);
 	return (
 		<Container>
 			{!props.user && <Redirect to="/" />}
 			<Content>
 				
 				<Layout>
-				   <LeftLayout>
+				   {width > 768 && (<LeftLayout>
 					   <section>
 					     <Left />
 					   </section>
-				   </LeftLayout>
+				   </LeftLayout>)
+                  }
 					<Main />
 					<RightLayout>
 						<section>
